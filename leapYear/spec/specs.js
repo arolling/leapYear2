@@ -16,11 +16,11 @@ describe('leapYear', function() {
   });
 
   it("is a word not a number", function() {
-    expect(leapYear(parseInt("tree"))).to.equal("NaN");
+    expect(leapYear("tree")).to.equal("NaN");
   });
 
   it("is a blank field", function() {
-    expect(leapYear(parseInt(""))).to.equal("empty");
+    expect(leapYear("")).to.equal("empty");
   });
 
   it("is a negative number", function() {
