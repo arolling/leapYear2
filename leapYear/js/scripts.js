@@ -18,13 +18,32 @@ var leapYear = function(year) {
 // User Interface
 $(document).ready(function() {
   $("form#leap-year").submit(function(event) {
-    var year = parseInt($("input#year").val());
-    var result = leapYear(year);
 
-    if (year === ""){
-
+    var yearStr = $("input#year").val();
+    if (yearStr === '') {
+      var result = leapYear(yearStr);
     } else {
+      var year = parseInt($("input#year").val());
+      var result = leapYear(year);
+    }
 
+    $('#errors').hide();
+    $("#result").hide();
+
+    if (result === 'NaN'){
+      $(".error").text("not entered a number");
+      $('#errors').show();
+    } else if (result === "empty") {
+      $(".error").text("not entered anything");
+      $('#errors').show();
+    } else if (result === "negative") {
+      $(".error").text("entered a negative year");
+      $('#errors').show();
+    } else if (result === "tooLarge") {
+      $('.error').text("have chosen a year beyond our predictive capacity");
+      $('#errors').show();
+    } else {
+      //clean of errors
       $(".year").text(year);
 
       if (!result) {  //equivalent to if result === false
